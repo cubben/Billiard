@@ -36,8 +36,10 @@ public slots:
 
     // Set zoom factor
     void setZoom( int newzoom );
-
     void checkTableEdge(float x, float z);
+    void createWhiteBall(float x, float z);
+    void createBalls();
+
 protected:
     void initializeGL();
     void resizeGL(int w, int h);

@@ -99,6 +99,50 @@ void OGLWidget::checkTableEdge(float x, float z){
    }
 }
 
+void OGLWidget::createWhiteBall(float x,float z){
+    //Weisse Kugel
+    k.drawKugel(0.3, x, 0.3, z, 1.0,1.0,1.0, true);
+}
+
+void OGLWidget::createBalls(){
+   float frontZ = 3.5;
+   float radius = 0.3;
+   int row = 1;
+   int column = 1;
+
+   //gelb-volle
+    k.drawKugel(radius, 0, radius, frontZ, 0.8,0.8,0.0, true);
+    //blaue-halbe
+    k.drawKugel(radius, -0.3*column, radius, frontZ + (radius*2*row), 0.0, 0.0,6.0, false);
+    //rot-halbe
+    k.drawKugel(radius, 0.3*column, radius, frontZ + (radius*2*row), 0.8, 0.0, 0.0, false);
+    row = 2;
+    column = 2;
+    //rot-voll
+    k.drawKugel(radius, -0.3*column, radius, frontZ + (radius*2*row), 0.5, 0.0, 0.0, true);
+    //schwarz-voll
+    k.drawKugel(radius, 0, radius, frontZ + (radius*2*row), 0.0, 0.0, 0.0, true);
+    //orange-voll
+    k.drawKugel(radius, 0.3*column, radius, frontZ + (radius*2*row), 0.25, 0.15, 0.0, true);
+    row = 3;
+    column = 3;
+    //orange-halb
+    k.drawKugel(radius, -0.3*column, radius, frontZ + (radius*2*row), 0.25, 0.15, 0.0, false);
+    //lila-voll
+    k.drawKugel(radius, -0.3*(column-2), radius, frontZ + (radius*2*row), 0.1, 0.03, 0.1, true);
+    //grün-halb
+    k.drawKugel(radius, 0.3*(column-2), radius, frontZ + (radius*2*row), 0.0, 0.2, 0.0, false);
+    //gelb-halb
+    k.drawKugel(radius, 0.3*column, radius, frontZ + (radius*2*row), 0.8, 0.8, 0.0, false);
+    row = 4;
+    column = 4;
+
+    //gelb-halb
+    k.drawKugel(radius, 0.3*column, radius, frontZ + (radius*2*row), 0.8, 0.8, 0.0, false);
+
+
+}
+
 void OGLWidget::paintGL()
 {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -115,7 +159,7 @@ void OGLWidget::paintGL()
     glScalef( scale, scale, scale ); // Scale along all axis
     glShadeModel(GL_FLAT);
 
-    t.drawTable(0.0,1.0,0.0);
+    t.drawTable(0.0,0.1,0.0);
 
     //Wenn mouse klick auf der ein und derselben stelle ist, kugel zur Ausgangsposition bewegen
     if(dx == 0 && dz == 0){
@@ -128,15 +172,8 @@ void OGLWidget::paintGL()
     float x = kugelx + dx;
     checkTableEdge(x,z);
 
-    //Weisse Kugel
-    k.drawKugel(0.3, x, 0.3, z, 1.0,1.0,1.0, true);
-
-    //gelb-volle
-    k.drawKugel(0.3, 0, 0.3, 3.5, 0.8,0.8,0.0, true);
-    //blaue-volle
-    k.drawKugel(0.3, -0.3, 0.3, 4.1, 0.0, 0.0,6.0, false);
-    //rot-volle
-    k.drawKugel(0.3, 0.3, 0.3, 4.1, 0.6, 0.0, 0.0, false);
+    createWhiteBall(x,z);
+    createBalls();
 
     //Letzen kugel koordinaten speichern
     kugelx = x;

@@ -12,7 +12,6 @@ void table::drawBoden(float red, float green, float blue){
        glVertex3f( -4,  0, 8);
        glVertex3f( 4,  0, 8);
        glEnd();
-
    }
 
 void table::seiteAB(float red, float green, float blue){

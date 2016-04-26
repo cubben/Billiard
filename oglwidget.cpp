@@ -77,10 +77,31 @@ void OGLWidget::initializeGL()
     glPolygonMode( GL_FRONT_AND_BACK, GL_FILL );
 }
 
+void OGLWidget::checkTableEdge(float x, float z){
+    //Kugel nicht ausserhalb des Randes bewegen lassen
+    //Wand rechts;
+    if(x > 4-0.3){
+        dx = dx * (-1);
+    }
+    //Wand links
+    if(x < -4+0.3){
+         dx = dx * (-1);
+    }
+    //Wand oben
+    if(z > 8-0.3){
+         dz = dz * (-1);
+    }
+
+    //Wand unten
+   if(z < -8+0.3){
+         dz = dz * (-1);
+   }
+}
+
 void OGLWidget::paintGL()
 {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
+    glOrtho(-10.0,10.0,-10.0,10.0,1,10);
     glLoadIdentity();
 
     // Apply rotation angles
@@ -104,28 +125,18 @@ void OGLWidget::paintGL()
     //neue bewegungskoordinate delta x/z mal dem animationsschritt
     float z = kugelz + dz;
     float x = kugelx + dx;
+    checkTableEdge(x,z);
 
-    //Kugel nicht ausserhalb des Randes bewegen lassen
-    //Wand rechts;
-    if(x > 4-0.3){
-        dx = dx * (-1);
-    }
-    //Wand links
-    if(x < -4-0.3){
-         dx = dx * (-1);
-    }
-    //Wand oben
-    if(z > 8-0.3){
-         dz = dz * (-1);
-    }
+    //Weisse Kugel
+    k.drawKugel(0.3, x, 0.3, z, 1.0,1.0,1.0, true);
 
-    //Wand unten
-   if(z < -8-0.3){
-         dz = dz * (-1);
-   }
+    //gelb-volle
+    k.drawKugel(0.3, 0, 0.3, 3.5, 0.8,0.8,0.0, true);
+    //blaue-volle
+    k.drawKugel(0.3, -0.3, 0.3, 4.1, 0.0, 0.0,6.0, true);
+    //rot-volle
+    k.drawKugel(0.3, 0.3, 0.3, 4.1, 0.6, 0.0, 0.0, true);
 
-
-    k.drawKugel(0.3, x, 0.3, z, 1.0,1.0,1.0);
     //Letzen kugel koordinaten speichern
     kugelx = x;
     kugelz = z;
@@ -156,8 +167,6 @@ void OGLWidget::mousePressEvent(QMouseEvent *event)
 void OGLWidget::mouseReleaseEvent(QMouseEvent *event){
     double mouseDeltaX = event->x() - lastpos.x();
     double mouseDeltaZ = event->y() - lastpos.y();
-    std::cout << "x: " << mouseDeltaX << std::endl;
-    std::cout << "z: " << mouseDeltaZ << std::endl;
 
     //Geschwindikeit
     if(mouseDeltaX == 0 && mouseDeltaZ == 0){
@@ -165,7 +174,7 @@ void OGLWidget::mouseReleaseEvent(QMouseEvent *event){
             dz = 0;
             duration = 0;
     }else{
-     float v = mouseDeltaZ * 0.01; //Einheit pro sekunde
+    float v = mouseDeltaZ * 0.01; //Einheit pro sekunde
     std::cout << "v: " << v << std::endl;
 
     double px = pow(mouseDeltaX,2);
@@ -180,8 +189,8 @@ void OGLWidget::mouseReleaseEvent(QMouseEvent *event){
     dx =  mouseDeltaX / duration * (-1);
     dz =  mouseDeltaZ / duration;
 
-    float pi = 3.1415926;
-    einfallswinkel = 90 - sin(dx*pi/180) * s;
+    //float pi = 3.1415926;
+    //einfallswinkel = 90 - sin(dx*pi/180) * s;
 
     std::cout << "dx: " << dx << std::endl;
     std::cout << "dz: " << dz << std::endl; 

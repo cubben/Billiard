@@ -36,8 +36,8 @@ public slots:
 
     // Set zoom factor
     void setZoom( int newzoom );
-    // Set unfolding position
 
+    void checkTableEdge(float x, float z);
 protected:
     void initializeGL();
     void resizeGL(int w, int h);

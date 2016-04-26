@@ -33,7 +33,7 @@ kugel::kugel()
 
     }
 
-    void kugel::drawKugel(float radius, float x, float y, float z, float red, float green, float blue){
+    void kugel::drawKugel(float radius, float x, float y, float z, float red, float green, float blue, bool solid){
 
             double alpha = 10.0;
             double beta = 0;
@@ -41,11 +41,29 @@ kugel::kugel()
             int i = 0;
             int j = 0;
 
+            float r = red;
+            float g = green;
+            float b = blue;
+
             while(j <=72){
                 beta += 5;
                 i=0;
-                 while(i <= 72){
-                    drawQuad(radius, x, y, z, alpha*pi/180, beta*pi/180, red, green, blue);
+
+                if(!solid){
+                     if(j <= 10 || j >= 62){
+                        r = 1.0;
+                        g = 1.0;
+                        b = 1.0;
+                    }
+                    else{
+                         r = red;
+                         g = green;
+                         b = blue;
+                    }
+                 }
+
+                while(i <= 72){
+                    drawQuad(radius, x, y, z, alpha*pi/180, beta*pi/180, r, g, b);
                     alpha+= 5;
                     i++;
                 }

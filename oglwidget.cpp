@@ -134,9 +134,9 @@ void OGLWidget::paintGL()
     //gelb-volle
     k.drawKugel(0.3, 0, 0.3, 3.5, 0.8,0.8,0.0, true);
     //blaue-volle
-    k.drawKugel(0.3, -0.3, 0.3, 4.1, 0.0, 0.0,6.0, true);
+    k.drawKugel(0.3, -0.3, 0.3, 4.1, 0.0, 0.0,6.0, false);
     //rot-volle
-    k.drawKugel(0.3, 0.3, 0.3, 4.1, 0.6, 0.0, 0.0, true);
+    k.drawKugel(0.3, 0.3, 0.3, 4.1, 0.6, 0.0, 0.0, false);
 
     //Letzen kugel koordinaten speichern
     kugelx = x;
@@ -175,7 +175,7 @@ void OGLWidget::mouseReleaseEvent(QMouseEvent *event){
             dz = 0;
             duration = 0;
     }else{
-    float v = mouseDeltaZ * 0.001; //Einheit pro sekunde
+    float v = mouseDeltaZ * 0.007; //Einheit pro sekunde
     std::cout << "v: " << v << std::endl;
 
     double px = pow(mouseDeltaX,2);

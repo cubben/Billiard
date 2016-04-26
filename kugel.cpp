@@ -7,22 +7,25 @@ kugel::kugel()
     glBegin(GL_QUADS);
         glColor4f(red, green, blue, 1.0);
 
+        float pi = 3.1415926;
+        float breite = 10*pi/180;
+
+
         float x1 = radius * cos(alpha) * cos(beta);
         float y1 = radius * sin(beta);
-        float z1 = radius * sin(alpha) * cos(beta);
+        float z1 = radius * (-sin(alpha)) * cos(beta);
 
-        float x2 = radius * cos(alpha+0.1) * cos(beta);
+        float x2 = radius * cos(alpha+breite) * cos(beta);
         float y2 = radius * sin(beta);
-        float z2 = radius * sin(alpha+0.1) * cos(beta);
+        float z2 = radius * (-sin(alpha+breite)) * cos(beta);
 
-        float x3 = radius * cos(alpha+0.1) * cos(beta+0.1);
-        float y3 = radius * sin(beta+0.1);
-        float z3 = radius * sin(alpha+0.1) * cos(beta+0.1);
+        float x3 = radius * cos(alpha+breite) * cos(beta+breite);
+        float y3 = radius * sin(beta+breite);
+        float z3 = radius * (-sin(alpha+breite)) * cos(beta+breite);
 
-        float x4 = radius * cos(alpha) * cos(beta);
-        float y4 = radius * sin(beta+0.1);
-        float z4 = radius * sin(alpha) * cos(beta+0.1);
-
+        float x4 = radius * cos(alpha) * cos(beta+breite);
+        float y4 = radius * sin(beta+breite);
+        float z4 = radius * (-sin(alpha)) * cos(beta+breite);
 
         glVertex3f(dx + x1, dy + y1, dz +z1);
         glVertex3f(dx + x2, dy + y2, dz +z2);
@@ -35,39 +38,38 @@ kugel::kugel()
 
     void kugel::drawKugel(float radius, float x, float y, float z, float red, float green, float blue, bool solid){
 
-            double alpha = 10.0;
-            double beta = 0;
+            double alpha = 0;
+            double beta = -90;
             float pi = 3.1415926;
-            int i = 0;
-            int j = 0;
 
             float r = red;
             float g = green;
             float b = blue;
 
-            while(j <=72){
-                beta += 5;
-                i=0;
+            //beta = z achse, alpha = y achse
+            while(beta <=90){
+                   alpha = 0.0;
 
                 if(!solid){
-                     if(j <= 10 || j >= 62){
-                        r = 1.0;
-                        g = 1.0;
-                        b = 1.0;
-                    }
-                    else{
-                         r = red;
-                         g = green;
-                         b = blue;
-                    }
-                 }
-
-                while(i <= 72){
-                    drawQuad(radius, x, y, z, alpha*pi/180, beta*pi/180, r, g, b);
-                    alpha+= 5;
-                    i++;
+                   if(beta < -30 || beta >=30){
+                       r = 1.0;
+                       g = 1.0;
+                       b = 1.0;
+                   }
+                   else{
+                        r = red;
+                        g = green;
+                        b = blue;
+                   }
                 }
-                j++;
+                while(alpha <= 360){
+
+                    drawQuad(radius, x, y, z, alpha*pi/180, beta*pi/180, r, g, b);
+                    alpha+= 10;
+                }
+
+                beta += 10;
+
             }
 
       }

@@ -80,20 +80,21 @@ void OGLWidget::initializeGL()
 void OGLWidget::checkTableEdge(float x, float z){
     //Kugel nicht ausserhalb des Randes bewegen lassen
     //Wand rechts;
-    if(x > 4-0.3){
+    if(x > 4-0.5){
         dx = dx * (-1);
     }
     //Wand links
-    if(x < -4+0.3){
+    if(x < -4+0.5){
          dx = dx * (-1);
     }
     //Wand oben
-    if(z > 8-0.3){
+    if(z > 8-0.5){
+
          dz = dz * (-1);
     }
 
     //Wand unten
-   if(z < -8+0.3){
+   if(z < -8+0.5){
          dz = dz * (-1);
    }
 }
@@ -142,7 +143,7 @@ void OGLWidget::paintGL()
     kugelz = z;
     glLoadIdentity();
 
-    if(animstep >= (duration * 10 / frames)){
+    if(animstep >= (duration  / frames)){
         animtimer->stop();
         std::cout << "animtimer stop frames: " << animstep << std::endl;
         animstep = 0;
@@ -174,7 +175,7 @@ void OGLWidget::mouseReleaseEvent(QMouseEvent *event){
             dz = 0;
             duration = 0;
     }else{
-    float v = mouseDeltaZ * 0.01; //Einheit pro sekunde
+    float v = mouseDeltaZ * 0.001; //Einheit pro sekunde
     std::cout << "v: " << v << std::endl;
 
     double px = pow(mouseDeltaX,2);

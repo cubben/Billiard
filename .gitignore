@@ -1,7 +1,7 @@
-
+/Billiard.pro
 /build/
 /bin/
 .*
 !.gitignore
 
-Billiard.pro
+

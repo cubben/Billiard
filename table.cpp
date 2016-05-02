@@ -5,51 +5,151 @@ table::table()
 }
 
 void table::drawBoden(float red, float green, float blue){
-   glBegin(GL_QUADS);
-       glColor3f(red, green, blue);
-       glVertex3f(4, 0, -8);
-       glVertex3f( -4, 0, -8);
-       glVertex3f( -4,  0, 8);
-       glVertex3f( 4,  0, 8);
-       glEnd();
-   }
+    glBegin(GL_QUADS);
+    glColor3f(red, green, blue);
+    glVertex3f(4, 0, -8);
+    glVertex3f( -4, 0, -8);
+    glVertex3f( -4,  0, 8);
+    glVertex3f( 4,  0, 8);
+    glEnd();
+}
 
 void table::seiteAB(float red, float green, float blue){
-glBegin(GL_QUADS);
+    //Left
+    glBegin(GL_QUADS);
     glColor3f(red, green, blue);
     glVertex3f(4, 0, -8);
     glVertex3f( 4, 0.5, -8);
-    glVertex3f( 4,  0.5, 8);
-    glVertex3f(4,  0, 8);
+    glVertex3f( 4,  0.5, 8.5);
+    glVertex3f(4,  0, 8.5);
     glEnd();
+
+    //Top
+    glBegin(GL_QUADS);
+    glColor3f(0.0545, 0.0352, 0.0168);
+    glVertex3f(4, 0.5, -8);
+    glVertex3f( 4.5, 0.5, -8);
+    glVertex3f( 4.5,  0.5, 8.5);
+    glVertex3f(4,  0.5, 8.5);
+    glEnd();
+    //Right
+    glBegin(GL_QUADS);
+    glColor3f(0.0545, 0.0352, 0.0168);
+    glVertex3f(4.5, 0.0, -8.5);
+    glVertex3f( 4.5, 0.5, -8.5);
+    glVertex3f( 4.5,  0.5, 8.5);
+    glVertex3f(4.5,  0.0, 8.5);
+    glEnd();
+    //Bottom
+    glBegin(GL_QUADS);
+    glColor3f(0.0545, 0.0352, 0.0168);
+    glVertex3f(4, 0.0, -8);
+    glVertex3f( 4.5, 0.0, -8);
+    glVertex3f( 4.5,  0.0, 8.5);
+    glVertex3f(4,  0.0, 8.5);
+    glEnd();
+
 }
 
 void table::seiteBC(float red, float green, float blue){
-glBegin(GL_QUADS);
-   glColor3f(red, green, blue);
-     glVertex3f(4, 0, -8);
-    glVertex3f(4, 0.5, -8);
+    glBegin(GL_QUADS);
+    glColor3f(red, green,blue);
+    glVertex3f(4.5, 0, -8);
+    glVertex3f(4.5, 0.5, -8);
     glVertex3f(-4, 0.5,-8);
     glVertex3f(-4,  0, -8);
     glEnd();
+
+    glBegin(GL_QUADS);
+    glColor3f(0.0545, 0.0352, 0.0168);
+    glVertex3f(4.5, 0.5, -8);
+    glVertex3f(4.5, 0.5, -8.5);
+    glVertex3f(-4, 0.5,-8.5);
+    glVertex3f(-4,  0.5, -8);
+    glEnd();
+
+    glBegin(GL_QUADS);
+    glColor3f(0.0545, 0.0352, 0.0168);
+    glVertex3f(4.5, 0, -8.5);
+    glVertex3f(4.5, 0.5, -8.5);
+    glVertex3f(-4.5, 0.5,-8.5);
+    glVertex3f(-4.5,  0, -8.5);
+    glEnd();
+
+    glBegin(GL_QUADS);
+    glColor3f(0.0545, 0.0352, 0.0168);
+    glVertex3f(4.5, 0, -8);
+    glVertex3f(4.5, 0, -8.5);
+    glVertex3f(-4, 0,-8.5);
+    glVertex3f(-4,  0, -8);
+    glEnd();
+
 }
 
 void table::seiteCD(float red, float green, float blue){
-glBegin(GL_QUADS);
-glColor3f(red, green, blue);
-    glVertex3f(-4, 0, -8);
-    glVertex3f( -4, 0.5, -8);
+    glBegin(GL_QUADS);
+    glColor3f(red, green, blue);
+    glVertex3f(-4, 0, -8.5);
+    glVertex3f( -4, 0.5, -8.5);
     glVertex3f( -4,  0.5, 8);
+    glVertex3f( -4,  0, 8);
+    glEnd();
+
+    glBegin(GL_QUADS);
+    glColor3f(0.0545, 0.0352, 0.0168);
+    glVertex3f(-4, 0.5, -8.5);
+    glVertex3f( -4.5, 0.5, -8.5);
+    glVertex3f( -4.5,  0.5, 8);
+    glVertex3f( -4,  0.5, 8);
+    glEnd();
+
+    glBegin(GL_QUADS);
+    glColor3f(0.0545, 0.0352, 0.0168);
+    glVertex3f(-4.5, 0, -8.5);
+    glVertex3f( -4.5, 0.5, -8.5);
+    glVertex3f( -4.5,  0.5, 8);
+    glVertex3f( -4.5,  0, 8);
+    glEnd();
+
+    glBegin(GL_QUADS);
+    glColor3f(0.0545, 0.0352, 0.0168);
+    glVertex3f(-4, 0, -8.5);
+    glVertex3f( -4.5, 0, -8.5);
+    glVertex3f( -4.5,  0, 8);
     glVertex3f( -4,  0, 8);
     glEnd();
 }
 
 void table::seiteAD(float red, float green, float blue){
-glBegin(GL_QUADS);
-glColor3f(red, green, blue);
-    glVertex3f(-4, 0, 8);
-    glVertex3f( -4, 0.5, 8);
+    glBegin(GL_QUADS);
+    glColor3f(red, green, blue);
+    glVertex3f(-4.5, 0, 8);
+    glVertex3f( -4.5, 0.5, 8);
     glVertex3f( 4,  0.5, 8);
+    glVertex3f( 4,  0, 8);
+    glEnd();
+
+    glBegin(GL_QUADS);
+    glColor3f(0.0545, 0.0352, 0.0168);
+    glVertex3f(-4.5, 0.5, 8);
+    glVertex3f( -4.5, 0.5, 8.5);
+    glVertex3f( 4,  0.5, 8.5);
+    glVertex3f( 4,  0.5, 8);
+    glEnd();
+
+    glBegin(GL_QUADS);
+    glColor3f(0.0545, 0.0352, 0.0168);
+    glVertex3f(-4.5, 0, 8.5);
+    glVertex3f( -4.5, 0.5, 8.5);
+    glVertex3f( 4,  0.5, 8.5);
+    glVertex3f( 4,  0, 8.5);
+    glEnd();
+
+    glBegin(GL_QUADS);
+    glColor3f(0.0545, 0.0352, 0.0168);
+    glVertex3f(-4.5, 0, 8);
+    glVertex3f( -4.5, 0, 8.5);
+    glVertex3f( 4,  0, 8.5);
     glVertex3f( 4,  0, 8);
     glEnd();
 }
@@ -57,10 +157,10 @@ glColor3f(red, green, blue);
 void table::drawTable(float red, float green, float blue){
 
     drawBoden(red,green,blue);
-    seiteAB(1.0,0.0,0.0);
-    seiteBC(1.0,0.0,0.0);
-    seiteCD(1.0,0.0,0.0);
-    seiteAD(1.0,0.0,0.0);
+    seiteAB(red,green,blue);
+    seiteBC(red,green,blue);
+    seiteCD(red,green,blue);
+    seiteAD(red,green,blue);
 
 }
 

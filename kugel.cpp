@@ -2,6 +2,7 @@
 #include <math.h>
 kugel::kugel()
 {
+
 }
     void kugel::drawQuad(float radius, float dx, float dy, float dz, float alpha, float beta, float red, float green, float blue){
     glBegin(GL_QUADS);
@@ -72,4 +73,6 @@ kugel::kugel()
 
             }
 
+            lastx = x;
+            lastz = z;
       }

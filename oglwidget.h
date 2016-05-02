@@ -44,6 +44,7 @@ protected:
     void initializeGL();
     void resizeGL(int w, int h);
     void paintGL();
+    void checkCollision(float& x, float& z, float dx, float dz);
 
 protected:
     int rotx;       // Rotation angles (0..360)
@@ -58,7 +59,9 @@ protected:
     float kugelz;
     int frames;
     table t;
-    kugel k;
+    kugel kWhite;
+    kugel balls[15];
+
     float duration;
     float einfallswinkel;
     QTimer* animtimer; // Timer needed to step animation every x msec

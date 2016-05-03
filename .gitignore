@@ -1,1 +1,12 @@
+<<<<<<< HEAD
 *.user
+=======
+/Billiard.pro
+/build/
+/bin/
+.*
+!.gitignore
+
+
+Billiard.pro
+>>>>>>> parent of b12ad2a... gitignore

@@ -11,7 +11,6 @@ kugel::kugel()
         float pi = 3.1415926;
         float breite = 10*pi/180;
 
-
         float x1 = radius * cos(alpha) * cos(beta);
         float y1 = radius * sin(beta);
         float z1 = radius * (-sin(alpha)) * cos(beta);
